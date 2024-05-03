@@ -8,7 +8,7 @@ OUT_DIR := $(OO)/libckteec
 all: libckteec
 install: libckteec
 
-LIB_NAME	:= libckteec
+LIB_NAME	:= libckteec2
 MAJOR_VERSION	:= 0
 MINOR_VERSION	:= 1
 PATCH_VERSION	:= 0
@@ -36,7 +36,7 @@ LIBCKTEEC_INCLUDES 	+= ${CURDIR}/../libteec/include
 LIBCKTEEC_CFLAGS	:= $(addprefix -I, $(LIBCKTEEC_INCLUDES)) \
 			$(CFLAGS) -D_GNU_SOURCE -fPIC
 
-LIBCKTEEC_LFLAGS	:= $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec
+LIBCKTEEC_LFLAGS	:= $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec2
 
 LIBCKTEEC_OBJ_DIR	:= $(OUT_DIR)
 LIBCKTEEC_OBJS		:= $(patsubst %.c,$(LIBCKTEEC_OBJ_DIR)/%.o, $(LIBCKTEEC_SRCS))

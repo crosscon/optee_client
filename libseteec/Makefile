@@ -8,7 +8,7 @@ OUT_DIR := $(OO)/libseteec
 all: libseteec
 install: libseteec
 
-LIB_NAME	:= libseteec
+LIB_NAME	:= libseteec2
 MAJOR_VERSION	:= 0
 MINOR_VERSION	:= 1
 PATCH_VERSION	:= 0
@@ -29,7 +29,7 @@ LIBSETEEC_INCLUDES 	+= ${CURDIR}/../libteec/include
 LIBSETEEC_CFLAGS	:= $(addprefix -I, $(LIBSETEEC_INCLUDES)) \
 			$(CFLAGS) -D_GNU_SOURCE -fPIC
 
-LIBSETEEC_LFLAGS	:= $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec -lpthread
+LIBSETEEC_LFLAGS	:= $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec2 -lpthread
 
 LIBSETEEC_OBJ_DIR	:= $(OUT_DIR)
 LIBSETEEC_OBJS		:= $(patsubst %.c,$(LIBSETEEC_OBJ_DIR)/%.o, $(LIBSETEEC_SRCS))

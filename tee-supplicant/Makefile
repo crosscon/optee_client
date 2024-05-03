@@ -12,7 +12,7 @@ all: tee-supplicant
 ################################################################################
 # Teec configuration
 ################################################################################
-PACKAGE_NAME	:= tee-supplicant
+PACKAGE_NAME	:= tee-supplicant2
 
 TEES_SRCS	:= tee_supplicant.c \
 		   teec_ta_load.c \
@@ -55,7 +55,7 @@ ifeq ($(RPMB_EMU),1)
 TEES_CFLAGS	+= -DRPMB_EMU=1
 endif
 TEES_FILE	:= $(OUT_DIR)/$(PACKAGE_NAME)
-TEES_LFLAGS    := $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec
+TEES_LFLAGS    := $(LDFLAGS) -L$(OUT_DIR)/../libteec -lteec2
 
 ifeq ($(CFG_TA_GPROF_SUPPORT),y)
 TEES_CFLAGS	+= -DCFG_TA_GPROF_SUPPORT

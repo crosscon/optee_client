@@ -166,18 +166,16 @@ TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *ctx)
 	if (!ctx)
 		return TEEC_ERROR_BAD_PARAMETERS;
 
-	for (n = 0; n < TEEC_MAX_DEV_SEQ; n++) {
-		uint32_t gen_caps = 0;
+        uint32_t gen_caps = 0;
 
-		snprintf(devname, sizeof(devname), "/dev/tee%zu", n);
-		fd = teec_open_dev(devname, name, &gen_caps);
-		if (fd >= 0) {
-			ctx->imp.fd = fd;
-			ctx->imp.reg_mem = gen_caps & TEE_GEN_CAP_REG_MEM;
-			ctx->imp.memref_null = gen_caps & TEE_GEN_CAP_MEMREF_NULL;
-			return TEEC_SUCCESS;
-		}
-	}
+        snprintf(devname, sizeof(devname), "/dev/tee%zu", n=1);
+        fd = teec_open_dev(devname, name, &gen_caps);
+        if (fd >= 0) {
+            ctx->imp.fd = fd;
+            ctx->imp.reg_mem = gen_caps & TEE_GEN_CAP_REG_MEM;
+            ctx->imp.memref_null = gen_caps & TEE_GEN_CAP_MEMREF_NULL;
+            return TEEC_SUCCESS;
+        }
 
 	return TEEC_ERROR_ITEM_NOT_FOUND;
 }

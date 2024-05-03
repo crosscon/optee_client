@@ -64,7 +64,7 @@
 
 #define RPC_NUM_PARAMS	5
 
-#define DEFAULT_TA_DIR "optee_armtz"
+#define DEFAULT_TA_DIR "optee2_armtz"
 
 #define RPC_BUF_SIZE	(sizeof(struct tee_iocl_supp_send_arg) + \
 			 RPC_NUM_PARAMS * sizeof(struct tee_ioctl_param))
@@ -459,7 +459,7 @@ static int open_dev(const char *devname, uint32_t *gen_caps)
 		goto err;
 
 	/* Only OP-TEE supported */
-	if (vers.impl_id != TEE_IMPL_ID_OPTEE)
+	if (vers.impl_id != 3) /* OPTEE2 */
 		goto err;
 
 	if (gen_caps)
@@ -478,12 +478,10 @@ static int get_dev_fd(uint32_t *gen_caps)
 	char name[PATH_MAX] = { 0 };
 	size_t n = 0;
 
-	for (n = 0; n < MAX_DEV_SEQ; n++) {
-		snprintf(name, sizeof(name), "/dev/teepriv%zu", n);
-		fd = open_dev(name, gen_caps);
-		if (fd >= 0)
-			return fd;
-	}
+        snprintf(name, sizeof(name), "/dev/teepriv1");
+        fd = open_dev(name, gen_caps);
+        if (fd >= 0)
+            return fd;
 	return -1;
 }
 

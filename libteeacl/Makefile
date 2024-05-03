@@ -8,7 +8,7 @@ OUT_DIR := $(OO)/libteeacl
 all: libteeacl
 install: libteeacl
 
-LIB_NAME	:= libteeacl
+LIB_NAME	:= libteeacl2
 MAJOR_VERSION	:= 0
 MINOR_VERSION	:= 1
 PATCH_VERSION	:= 0
